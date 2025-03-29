@@ -1,9 +1,18 @@
 pipeline{
     agent any
     tools {
-        nodejs 'nodejs' // Specify the NodeJS installation name in Jenkins
+        nodejs 'npm'
     }
     stages {
+        stage('check node and npm') {
+            steps {
+                script {
+                    echo 'Checking Node.js and npm versions...'
+                    bat 'node -v'
+                    bat 'npm -v'
+                }
+            }
+        }
         stage('Install Dependencies') {
             steps {
                 script {
