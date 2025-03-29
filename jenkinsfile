@@ -1,14 +1,14 @@
 pipeline{
     agent any
     tools {
-        maven 'maven-3.6.3'
+        npm 'npm-16.14.0'
     }
     stages {
         stage('Build') {
             steps {
                 script {
                     echo 'Building the project...'
-                    bat 'mvn clean package'
+                    bat 'npm install'
                 }
             }
         }
@@ -16,7 +16,7 @@ pipeline{
             steps {
                 script {
                     echo 'Running tests...'
-                    bat 'mvn test'
+                    bat 'npm test'
                 }
             }
         }
@@ -24,7 +24,7 @@ pipeline{
             steps {
                 script {
                     echo 'Deploying the application...'
-                    bat 'mvn deploy'
+                    bat 'npm run deploy'
                 }
             }
         }
